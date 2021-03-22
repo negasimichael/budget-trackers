@@ -28,7 +28,6 @@ The developer is authorizing a free installation by cloning from the code [negas
    ## Screenshot Images
    
 ![budget-trackers](public/Images/traker1.png)
-
 ![budget-trackers](public/Images/traker2.png)
 
 ## Contribution
