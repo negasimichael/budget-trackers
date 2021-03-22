@@ -1,6 +1,7 @@
 # budget-trackers
 
 ## Description
+Budget Tracker application is a (PWA) progressive web application allow users to track their budgets by adding and subtracting  expenses.Users can also able to add a transaction with  without  connection. When users enter  transaction while offline, these transactions are stored in the indexedDB and transferred to the database when the user comes back online.
 
 
    ## Table of Contents
@@ -38,7 +39,6 @@ The developer is authorizing a free installation by cloning from the code [negas
   * Linkedin Profile: [negasimichael](https://www.linkedin.com/feed/)
   * Deployed URL: [negasimichael](#)
   * Github URL: [negasimichael](https://github.com/negasimichael/budget-trackers)
-
   * Email: negasimichael1@gmail.com
   
 ## License
