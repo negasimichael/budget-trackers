@@ -4,8 +4,8 @@ const FILES_TO_CACHE = [
     "/",
     "/db.js",
     "/index.js",
-    "/manifest.json",
-    "/style.css",
+    "/manifest.webmanifest",
+    "/styles.css",
     "/icons/icon-192x192.png",
     "/icons/icon-512x512.png",
 ];
@@ -13,6 +13,7 @@ const FILES_TO_CACHE = [
 // install
 self.addEventListener("install", function (evt) {
     evt.waitUntil(
+        // open the cache, then for each file, return a promise. if that promise resoves, and the file cache,else throw and  an error
         caches.open(CACHE_NAME).then(cache => {
             return Promise.all(
                 FILES_TO_CACHE.map(file => {
@@ -22,26 +23,26 @@ self.addEventListener("install", function (evt) {
         })
     );
 
-    // self.skipWaiting();
+    self.skipWaiting();
 });
 
 // activate
-// self.addEventListener("activate", function (evt) {
-//     evt.waitUntil(
-//         caches.keys().then(keyList => {
-//             return Promise.all(
-//                 keyList.map(key => {
-//                     if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
-//                         console.log("Removing old cache data", key);
-//                         return caches.delete(key);
-//                     }
-//                 })
-//             );
-//         })
-//     );
+self.addEventListener("activate", function (evt) {
+    evt.waitUntil(
+        caches.keys().then(keyList => {
+            return Promise.all(
+                keyList.map(key => {
+                    if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
+                        console.log("Removing old cache data", key);
+                        return caches.delete(key);
+                    }
+                })
+            );
+        })
+    );
 
-//     self.clients.claim();
-// });
+    self.clients.claim();
+});
 
 // fetch
 self.addEventListener("fetch", function (evt) {
