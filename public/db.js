@@ -1,21 +1,22 @@
 let db;
-const request = indexedDB.open('budget', 2);
+const request = window.indexedDB.open('Budget', 2)
 
-request.onupgradeneeded = function (evt) {
-  const db = evt.target.result;
-  db.createObjectStore('pending', {keyPath: 'id', autoIncrement: true });
+
+request.onupgradeneeded = e => {
+  const db = e.target.result;
+  db.createObjectStore('pending', { keyPath: 'id', autoIncrement: true });
 };
 
-request.onsuccess = function (evt) {
-  db = evt.target.result;
+request.onsuccess = e => {
+  db = e.target.result;
 
   if (navigator.onLine) {
     checkDatabase();
   }
 };
 
-request.onerror = function (evt) {
-  console.log("Hello World! " + evt.target.errorCode);
+request.onerror = e => {
+  console.log("Successfully opened! " + e.target.errorCode);
 };
 
 function saveRecord(record) {
