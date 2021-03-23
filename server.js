@@ -27,13 +27,6 @@ mongoose.connect(
 .then(()=> console.log('mongodb connected'))
 .catch(error => console.log('mongodb connection', error));
 
-
-
-// mongoose.connect("mongodb://localhost/budget", {
-//   useNewUrlParser: true,
-//   useFindAndModify: false
-// });
-
 // routes
 app.use(require("./routes/api.js"));
 
