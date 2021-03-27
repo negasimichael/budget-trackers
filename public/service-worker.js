@@ -13,7 +13,7 @@ const FILES_TO_CACHE = [
 // install
 self.addEventListener("install", function (evt) {
     evt.waitUntil(
-        // open the cache, then for each file, return a promise. if that promise resoves, and the file cache,else throw and  an error
+        // open the cache, then for each file, return a promise. If that promise resolves, and the file cache,else throw and  an error
         caches.open(CACHE_NAME).then(cache => {
             return Promise.all(
                 FILES_TO_CACHE.map(file => {
